@@ -1,0 +1,57 @@
+PUT /notification
+{
+  "mappings": {
+    "alert": {
+      "properties": {
+        "text": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
+
+PUT /notification/.percolator/1
+{
+    "query" : {
+        "match" : {
+            "text" : "java"
+        }
+    },
+    "email" : "admin@java.pl"
+}
+
+PUT /notification/.percolator/2
+{
+    "query" : {
+        "match" : {
+            "text" : "groovy"
+        }
+    },
+    "email" : "admin@groovy.pl"
+}
+
+PUT /notification/.percolator/3
+{
+    "query" : {
+        "match" : {
+            "text" : "scala"
+        }
+    },
+    "email" : "admin@scala.pl"
+}
+
+
+GET /notification/alert/_percolate
+{
+    "doc" : {
+        "text" : "java groovy scala"
+    }
+}
+
+
+GET twitter/_search?fields=text
+
+
+
+
