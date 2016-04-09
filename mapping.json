@@ -1,0 +1,40 @@
+PUT twitter
+{
+  "mappings": {
+    "developer" : {
+      "properties": {
+  "text" : {  "type": "string", "index": "analyzed", "analyzer": "my_analyzer" },
+  "coordinates" : {
+"type" : "object",
+"dynamic": true,
+"properties" : {
+"coordinates" : { "type" : "geo_point" }
+}}
+
+    }
+  },
+  "all" : {
+      "properties": {
+  "text" : {  "type": "string", "index": "analyzed", "analyzer": "my_analyzer" },
+  "coordinates" : {
+"type" : "object",
+"dynamic": true,
+"properties" : {
+"coordinates" : { "type" : "geo_point" }
+}}
+    }
+  }
+},
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_analyzer": { 
+          "type": "standard", 
+          "stopwords": [ "https", "t.co", "rt" ] 
+        }
+      }
+    }
+  }
+
+}
+

@@ -1,0 +1,30 @@
+input {
+  twitter {
+    consumer_key => "JgKUwkCZ"
+    consumer_secret => "KKp3qF6bGNgNlT3ZBNDCoielRm4"
+    oauth_token => "giU1gEsply7d4MXzb1QE4sVAzNnQz7a6"
+    oauth_token_secret => "4ZXPOqXAW30THCJTddAoMas9Bn2J"
+    keywords           => [ "java", "groovy", "scala", "js", "python", "perl"]
+    full_tweet         => true
+    type               => "developer"
+  }
+  twitter {
+    consumer_key => "qkd0cPT8JgKUwkCZ"
+    consumer_secret => "SpUOZNUKKp3qF6bGNgNlT3ZBNDCoielRm4"
+    oauth_token => "gEsply7d4MXzb1QE4sVAzNnQz7a6"
+    oauth_token_secret => "OqXAW30THCJTddAoMas9Bn2J"
+    use_samples        => true
+    full_tweet         => true
+    type               => "all"
+  }
+}
+
+
+output {
+  stdout {
+    codec => dots
+  }
+  elasticsearch {
+    index         => "twitter"
+  }
+}
